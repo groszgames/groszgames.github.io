@@ -1,6 +1,6 @@
 {
-  "wersja_kod": 15,
-  "wersja": "1.5",
-  "opis_pl": "Nowy wybór składu, ostrzeżenia o brakujących pozycjach i nowe twarze zawodników.",
-  "opis_en": "New line-up selection, missing position warnings and new player faces."
+  "wersja_kod": 16,
+  "wersja": "1.6",
+  "opis_pl": "Nowa mapa kompleksu klubu, nowy sklep i obiekty, okienko po zakończeniu budowy, awarie i naprawy.",
+  "opis_en": "New club complex map, new shop and facilities, construction complete window, breakdowns and repairs."
 }

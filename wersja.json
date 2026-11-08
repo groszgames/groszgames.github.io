@@ -1,6 +1,6 @@
 {
-  "wersja_kod": 18,
-  "wersja": "1.8",
-  "opis_pl": "Sponsorzy! Bandy LED wokół boiska, nowe reklamy, kibice online, nowe transfery i finanse, nowy ekran główny.",
-  "opis_en": "Sponsors! LED boards around the court, new ads, fans online, new transfers and finances, new main screen."
+  "wersja_kod": 20,
+  "wersja": "1.8.1",
+  "opis_pl": "Poprawka: ekran meczu mieści się na wszystkich telefonach, dolne przyciski są zawsze widoczne.",
+  "opis_en": "Fix: the live match screen now fits all phones, the bottom buttons are always visible."
 }

@@ -1,6 +1,6 @@
 {
-  "wersja_kod": 26,
-  "wersja": "1.9",
-  "opis_pl": "Nowość: liga kobiet, menedżerki, nowe menu, rozwój menedżera i nagrody, taktyka w trakcie meczu (zagrywka, blok i obrona, okrzyk trenera), nowy ekran przed meczem i nowy trening.",
-  "opis_en": "New: women's league, female managers, new menu, manager progression and awards, in-match tactics (serve, block and defence, coach reactions), new pre-match screen and new training."
+  "wersja_kod": 27,
+  "wersja": "2.0",
+  "opis_pl": "Nowość: reprezentacje narodowe (selekcjoner, powołania, VNL, mistrzostwa), charaktery zawodników i rozmowy w gabinecie, czat kibiców w meczu, edytor klubów z kodem ligi.",
+  "opis_en": "New: national teams (head coach, call-ups, VNL, championships), player personalities and office talks, live fan chat in matches, club editor with league codes."
 }

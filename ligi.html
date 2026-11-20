@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ligi od graczy · Set Point Manager</title>
+<meta name="description" content="Kody lig do Edytora klubów w Set Point Manager – nazwy, miasta, kolory i nazwiska przygotowane przez graczy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;800&family=Poppins:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#070d22; --bg2:#0d1735; --panel:#111d42; --line:#253366;
+  --gold:#ecbe46; --gold2:#f7d77a; --fg:#eef2fb; --muted:#a6b1cf; --ink:#14161f; --green:#7fd18b;
+  --display:"Saira Condensed","Arial Narrow",Impact,sans-serif;
+  --body:"Poppins",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6}
+a{color:var(--gold2)}
+.wrap{max-width:900px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.lang-en .pl{display:none!important}
+body:not(.lang-en) .en{display:none!important}
+.bar{position:sticky;top:0;z-index:5;background:rgba(7,13,34,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:10px}
+.brand{font-family:var(--display);font-weight:800;letter-spacing:.04em;font-size:20px;text-transform:uppercase;color:var(--fg);text-decoration:none}
+.brand span{color:var(--gold)}
+.toggle{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.toggle button{background:none;border:0;color:var(--muted);font:600 13px var(--body);padding:6px 12px;cursor:pointer}
+.toggle button[aria-pressed="true"]{background:var(--gold);color:var(--ink)}
+button:focus-visible,a:focus-visible{outline:2px solid var(--gold2);outline-offset:2px}
+header.hero{padding-block:44px 20px;border-bottom:1px solid var(--line);background:radial-gradient(120% 90% at 50% 0%,#14275a 0%,var(--bg) 70%)}
+.eyebrow{font-family:var(--display);font-weight:600;font-size:15px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(34px,7vw,56px);line-height:1.02;margin:4px 0 12px;text-transform:uppercase}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(26px,4.4vw,36px);line-height:1.05;margin:0 0 14px;text-transform:uppercase}
+.lead{color:var(--muted);max-width:62ch;margin:0}
+section{padding-block:36px}
+.steps{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;counter-reset:k}
+.steps li{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px;counter-increment:k}
+.steps li::before{content:counter(k);display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--gold);color:var(--ink);font-weight:700;margin-bottom:6px}
+.steps b{display:block}
+.steps span{color:var(--muted);font-size:14px}
+.lista{display:grid;gap:12px}
+.liga{display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;background:var(--panel);border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:14px;padding:14px 16px}
+.liga .t{flex:1 1 260px;min-width:0}
+.liga h3{margin:0;font-family:var(--display);font-size:24px;letter-spacing:.02em;color:var(--gold2);overflow-wrap:anywhere}
+.liga .m{color:var(--muted);font-size:14px;overflow-wrap:anywhere}
+.tag{display:inline-block;font-size:12px;font-weight:600;border:1px solid var(--line);border-radius:999px;padding:1px 9px;margin-right:6px;color:var(--fg)}
+.copy{background:var(--gold);color:var(--ink);border:0;border-radius:12px;font:600 15px var(--body);padding:11px 18px;cursor:pointer;white-space:nowrap}
+.copy.ok{background:var(--green)}
+.pusto{background:var(--panel);border:1px dashed var(--line);border-radius:14px;padding:22px;color:var(--muted);text-align:center}
+.wyslij{background:linear-gradient(135deg,#1a2c63,#111d42);border:1px solid rgba(236,190,70,.45);border-radius:16px;padding:20px}
+.wyslij p{margin:0 0 10px;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:12px;padding:12px 20px;font:600 15px var(--body);text-decoration:none;border:1px solid var(--gold);background:var(--gold);color:var(--ink)}
+.uwaga{color:var(--muted);font-size:13px;margin-top:22px}
+footer{border-top:1px solid var(--line);padding-block:24px;color:var(--muted);font-size:13px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="wrap">
+    <a class="brand" href="./">Set Point <span>Manager</span></a>
+    <div class="toggle" role="group" aria-label="Język / Language">
+      <button type="button" id="btn-pl" aria-pressed="true">PL</button>
+      <button type="button" id="btn-en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="pl">Edytor klubów · wersja 2.0</span><span class="en">Club editor · version 2.0</span></div>
+    <h1><span class="pl">Ligi od graczy</span><span class="en">Player leagues</span></h1>
+    <p class="lead"><span class="pl">W grze są tylko zmyślone kluby. W Edytorze klubów możesz sam nadać im nazwy, miasta, kolory i nazwiska zawodników – a tutaj znajdziesz gotowe ligi przygotowane przez innych graczy.</span><span class="en">The game only has fictional clubs. In the Club editor you can give them your own names, cities, colours and player names – and here you'll find ready-made leagues made by other players.</span></p>
+  </div>
+</header>
+
+<main>
+<section>
+  <div class="wrap">
+    <h2><span class="pl">Jak wczytać ligę</span><span class="en">How to load a league</span></h2>
+    <ol class="steps">
+      <li><b class="pl">Najprościej – w grze</b><b class="en">Easiest – in the game</b><span class="pl">Kariera → WIĘCEJ → EDYTOR KLUBÓW → LIGI OD GRACZY → WCZYTAJ.</span><span class="en">Career → MORE → CLUB EDITOR → PLAYER LEAGUES → LOAD.</span></li>
+      <li><b class="pl">Albo skopiuj kod</b><b class="en">Or copy the code</b><span class="pl">Kliknij KOPIUJ KOD przy lidze poniżej.</span><span class="en">Tap COPY CODE next to a league below.</span></li>
+      <li><b class="pl">Wklej w grze</b><b class="en">Paste in the game</b><span class="pl">EDYTOR KLUBÓW → WKLEJ KOD LIGI → ZASTOSUJ.</span><span class="en">CLUB EDITOR → PASTE LEAGUE CODE → APPLY.</span></li>
+      <li><b class="pl">Możesz wrócić</b><b class="en">You can undo it</b><span class="pl">PRZYWRÓĆ ORYGINAŁ cofa zmiany w klubie.</span><span class="en">RESTORE ORIGINAL undoes changes to a club.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2><span class="pl">Lista lig</span><span class="en">League list</span></h2>
+    <div class="lista" id="lista"><div class="pusto"><span class="pl">Wczytuję…</span><span class="en">Loading…</span></div></div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="wyslij">
+      <h2 style="font-size:28px"><span class="pl">Dodaj swoją ligę</span><span class="en">Add your league</span></h2>
+      <p class="pl">Zmień kluby w Edytorze, kliknij KOPIUJ KOD LIGI i wyślij kod w wiadomości na TikToku. Napisz, jak ma się nazywać Twoja liga i jak Cię podpisać. Najlepsze ligi dodam do listy – w grze i tutaj.</p>
+      <p class="en">Edit clubs in the editor, tap COPY LEAGUE CODE and send the code in a TikTok message. Tell me what your league is called and how to credit you. The best leagues will be added to the list – in the game and here.</p>
+      <a class="btn" href="https://www.tiktok.com/@groszgames" target="_blank" rel="noopener">TikTok @groszgames</a>
+    </div>
+    <p class="uwaga"><span class="pl">Nazwy na tej liście wpisali gracze. Set Point Manager nie jest powiązany z żadnym klubem, ligą ani związkiem sportowym.</span><span class="en">Names on this list were entered by players. Set Point Manager is not affiliated with any club, league or sports federation.</span></p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="./"><span class="pl">← Strona gry</span><span class="en">← Game website</span></a>
+    <span>© 2026 Grosz Games · Set Point Manager</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var b=document.body, pl=document.getElementById('btn-pl'), en=document.getElementById('btn-en');
+  function set(l){
+    b.classList.toggle('lang-en', l==='en');
+    document.documentElement.lang=l;
+    pl.setAttribute('aria-pressed', l==='pl'); en.setAttribute('aria-pressed', l==='en');
+    try{localStorage.setItem('spm-lang', l)}catch(e){}
+  }
+  var saved=null; try{saved=localStorage.getItem('spm-lang')}catch(e){}
+  if(!saved){ saved=(navigator.language||'pl').toLowerCase().indexOf('pl')===0?'pl':'en'; }
+  set(saved);
+  pl.addEventListener('click',function(){set('pl')});
+  en.addEventListener('click',function(){set('en')});
+
+  var LIGI_NAZWY={m:{1:['Ekstraliga','Ekstraliga'],2:['I liga','League 1'],3:['II liga','League 2'],4:['III liga','League 3']},
+                  k:{1:['Liga Kobiet',"Women's League"],2:['I liga kobiet',"Women's League 1"],3:['II liga kobiet',"Women's League 2"]}};
+  var lista=document.getElementById('lista');
+  function el(t,c,h){var e=document.createElement(t); if(c)e.className=c; if(h!=null)e.textContent=h; return e}
+  function dwa(p,e){var s=el('span'); var a=el('span','pl',p), b2=el('span','en',e); s.appendChild(a); s.appendChild(b2); return s}
+
+  // Odczyt kodu (rodzaj ligi i liczba klubów) – działa w nowszych przeglądarkach; bez tego karta i tak się pokaże.
+  function info(kod){
+    try{
+      if(!('DecompressionStream' in window) || kod.indexOf('SPM2:')!==0) return Promise.resolve(null);
+      var r=kod.slice(5), i=r.indexOf(':'); var bin=atob(r.slice(i+1)); var u=new Uint8Array(bin.length);
+      for(var k=0;k<bin.length;k++)u[k]=bin.charCodeAt(k);
+      var s=new Blob([u]).stream().pipeThrough(new DecompressionStream('gzip'));
+      return new Response(s).text().then(function(t){return JSON.parse(t)}).catch(function(){return null});
+    }catch(e){return Promise.resolve(null)}
+  }
+
+  function karta(L){
+    var d=el('div','liga'), t=el('div','t');
+    t.appendChild(el('h3',null,String(L.nazwa||'?')));
+    var m=el('div','m'); t.appendChild(m);
+    if(L.autor){ m.appendChild(dwa('autor: '+L.autor,'by '+L.autor)); }
+    if(L.opis){ m.appendChild(document.createTextNode(' · '+L.opis)); }
+    var tagi=el('div'); t.insertBefore(tagi,m);
+    info(String(L.kod||'')).then(function(x){
+      if(!x) return;
+      var g=el('span','tag'); g.appendChild(x.p==='k'?dwa('Liga kobiet',"Women's"):dwa('Liga mężczyzn',"Men's")); tagi.appendChild(g);
+      var n=(LIGI_NAZWY[x.p==='k'?'k':'m']||{})[x.l]; if(n){ var g2=el('span','tag'); g2.appendChild(dwa(n[0],n[1])); tagi.appendChild(g2); }
+      if(x.kl){ var g3=el('span','tag'); g3.appendChild(dwa(x.kl.length+' klubów',x.kl.length+' clubs')); tagi.appendChild(g3); }
+    });
+    var btn=el('button','copy'); btn.type='button'; btn.appendChild(dwa('KOPIUJ KOD','COPY CODE'));
+    btn.addEventListener('click',function(){
+      var done=function(){btn.classList.add('ok'); btn.innerHTML=''; btn.appendChild(dwa('SKOPIOWANO ✓','COPIED ✓')); setTimeout(function(){btn.classList.remove('ok'); btn.innerHTML=''; btn.appendChild(dwa('KOPIUJ KOD','COPY CODE'))},2500)};
+      if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(String(L.kod)).then(done,function(){zap(L.kod);done()}); }
+      else { zap(L.kod); done(); }
+    });
+    d.appendChild(t); d.appendChild(btn); return d;
+  }
+  function zap(s){ var ta=el('textarea'); ta.value=s; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select(); try{document.execCommand('copy')}catch(e){} ta.remove(); }
+  function pusto(p,e){ lista.innerHTML=''; var d=el('div','pusto'); d.appendChild(dwa(p,e)); lista.appendChild(d); }
+
+  fetch('ligi.json?t='+Date.now()).then(function(r){return r.json()}).then(function(d){
+    var L=(d&&d.ligi)||[];
+    if(!L.length){ pusto('Na razie nie ma jeszcze lig. Bądź pierwszy – wyślij swoją!','No leagues yet. Be the first – send yours!'); return; }
+    lista.innerHTML=''; L.forEach(function(x){ lista.appendChild(karta(x)) });
+  }).catch(function(){ pusto('Nie udało się wczytać listy. Odśwież stronę.','Could not load the list. Refresh the page.'); });
+})();
+</script>
+</body>
+</html>

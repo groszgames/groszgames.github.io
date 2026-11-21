@@ -1,6 +1,6 @@
 {
-  "wersja_kod": 27,
-  "wersja": "2.0",
-  "opis_pl": "Nowość: reprezentacje narodowe (selekcjoner, powołania, VNL, mistrzostwa), charaktery zawodników i rozmowy w gabinecie, czat kibiców w meczu, edytor klubów z kodem ligi.",
-  "opis_en": "New: national teams (head coach, call-ups, VNL, championships), player personalities and office talks, live fan chat in matches, club editor with league codes."
+  "wersja_kod": 28,
+  "wersja": "2.1",
+  "opis_pl": "Wersja 2.1 „Portfel menedżera”: własne pieniądze trenera, salon (auta, domy, ubrania), prestiż, szatnia, Twoi ludzie (analityk, skaut, agent, rzecznik), kursy trenerskie i poprawki.",
+  "opis_en": "Version 2.1 \"Manager's wallet\": your own money, showroom (cars, homes, clothes), prestige, wardrobe, your people (analyst, scout, agent, press officer), coaching courses and fixes."
 }
